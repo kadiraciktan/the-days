@@ -2,22 +2,32 @@
   "name": "the-days",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "typeorm": "nx build database && npx typeorm -d dist/libs/database/src/data-source.js",
+    "typeorm:cli": "nx build database && npx typeorm -d dist/libs/database/src/data-source.js --cli",
+    "migration:generate": "nx build database && npx typeorm -d dist/libs/database/src/data-source.js migration:generate ./libs/database/src/migrations/$npm_config_name",
+    "migration:run": "nx build database && npx typeorm -d dist/libs/database/src/data-source.js migration:run",
+    "migration:revert": "nx build database && npx typeorm -d dist/libs/database/src/data-source.js migration:revert"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/typeorm": "^9.0.1",
     "axios": "^1.0.0",
+    "pg": "^8.9.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "typeorm": "^0.3.12"
   },
   "devDependencies": {
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
     "@nrwl/eslint-plugin-nx": "15.7.1",
     "@nrwl/jest": "15.7.1",
+    "@nrwl/js": "15.7.1",
     "@nrwl/linter": "15.7.1",
     "@nrwl/nest": "15.7.1",
     "@nrwl/node": "15.7.1",
