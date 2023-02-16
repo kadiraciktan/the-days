@@ -12,7 +12,9 @@
         "tsConfig": "libs/database/tsconfig.lib.json",
         "packageJson": "libs/database/package.json",
         "main": "libs/database/src/index.ts",
-        "assets": ["libs/database/*.md"]
+        "assets": ["libs/database/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true,  
+        "buildableProjectDepsInPackageJsonType": "dependencies"
       }
     },
     "lint": {
