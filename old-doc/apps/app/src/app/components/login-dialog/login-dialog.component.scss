@@ -1,0 +1,27 @@
+.dialog-container {
+  width: 320px;
+  height: 320px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+
+  .logo {
+    color: #b30000;
+    font-size: 40px;
+    display: flex;
+    align-self: center;
+  }
+
+  .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: #fff;
+    & > * {
+      margin-bottom: 10px;
+    }
+  }
+}
