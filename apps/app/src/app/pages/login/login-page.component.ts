@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export type ButtonState = 'login' | 'register';
 
@@ -13,15 +13,47 @@ export class LoginPageComponent {
   primaryButtonText = 'Login';
   secondaryButtonText = 'Register';
 
-  usernameControl = new FormControl('', [Validators.required]);
+  emailControl = new FormControl('', [Validators.required]);
   passwordControl = new FormControl('', [Validators.required]);
   confirmPasswordControl = new FormControl('', [Validators.required]);
+  errorMessage = '';
+
+  formGroup?: FormGroup;
+
+  login(formGroup: FormGroup) {
+    if (formGroup.valid) {
+      console.log(formGroup.value);
+    } else {
+      this.errorMessage = 'Please fill out all fields';
+    }
+  }
+
+  register(formGroup: FormGroup) {
+    if (formGroup.valid) {
+      console.log(formGroup.value);
+    } else {
+      if (this.passwordControl.value !== this.confirmPasswordControl.value) {
+        this.errorMessage = 'Passwords do not match';
+      } else {
+        this.errorMessage = 'Please fill out all fields';
+      }
+    }
+  }
 
   onPrimaryButtonClick() {
     if (this.currentButtonState === 'login') {
-      console.log('Login');
+      const formGroup = new FormGroup({
+        email: this.emailControl,
+        password: this.passwordControl,
+      });
+      this.login(formGroup);
     } else {
-      console.log('Register');
+      const formGroup = new FormGroup({
+        email: this.emailControl,
+        password: this.passwordControl,
+        confirmPassword: this.confirmPasswordControl,
+      });
+      this.register(formGroup);
     }
   }
 

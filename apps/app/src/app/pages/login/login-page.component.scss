@@ -8,16 +8,21 @@
     width: 100%;
     max-width: 375px;
     padding: 15px;
-    margin: 0 auto;
+    margin: 50px auto;
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
     .login-form-button {
       width: 100%;
       margin-top: 10px;
+    }
+    .login-form-error {
+      display: flex;
+      margin-top: 5px;
+      justify-content: center;
     }
   }
 }

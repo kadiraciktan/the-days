@@ -2,15 +2,33 @@
   <div class="login-form">
     <h1>Login</h1>
     <mat-form-field>
-      <input matInput placeholder="Email" type="email" required />
+      <input
+        matInput
+        placeholder="Email"
+        type="email"
+        [formControl]="emailControl"
+        required
+      />
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Password" type="password" required />
+      <input
+        matInput
+        placeholder="Password"
+        type="password"
+        [formControl]="passwordControl"
+        required
+      />
     </mat-form-field>
 
     <mat-form-field *ngIf="currentButtonState === 'register'">
-      <input matInput placeholder="Confirm Password" type="password" required />
+      <input
+        matInput
+        placeholder="Confirm Password"
+        type="password"
+        [formControl]="confirmPasswordControl"
+        required
+      />
     </mat-form-field>
 
     <button
@@ -30,5 +48,9 @@
     >
       {{ secondaryButtonText }}
     </button>
+
+    <mat-error class="login-form-error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </mat-error>
   </div>
 </div>
