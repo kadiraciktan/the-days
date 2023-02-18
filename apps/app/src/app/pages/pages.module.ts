@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceModule } from '../services';
 
 const routes: Routes = [
   {
@@ -25,7 +26,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatButtonModule,
     BrowserAnimationsModule,
+    ServiceModule,
   ],
   exports: [],
+  providers: [],
 })
 export class PagesModule {}

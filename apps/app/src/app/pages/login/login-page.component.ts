@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from '../../services';
 
 export type ButtonState = 'login' | 'register';
 
@@ -20,9 +21,16 @@ export class LoginPageComponent {
 
   formGroup?: FormGroup;
 
+  constructor(private readonly loginService: LoginService) {}
+
   login(formGroup: FormGroup) {
     if (formGroup.valid) {
       console.log(formGroup.value);
+      this.loginService
+        .login(formGroup.value.email, formGroup.value.password)
+        .subscribe((response) => {
+          console.log(response);
+        });
     } else {
       this.errorMessage = 'Please fill out all fields';
     }

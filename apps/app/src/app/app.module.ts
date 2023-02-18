@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
@@ -10,6 +11,7 @@ import { PagesModule } from './pages';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     MatInputModule,
     MatFormFieldModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
