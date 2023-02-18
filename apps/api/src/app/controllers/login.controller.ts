@@ -1,17 +1,18 @@
-import { Controller, Get, Post } from '@nestjs/common';
-import { LoginService } from '../services';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { QueryBus } from '@nestjs/cqrs';
+import { LoginQuery } from '@the-days/cqrs';
 
 @Controller('login')
 export class LoginController {
-  constructor(private readonly loginService: LoginService) {}
+  constructor(private readonly queryBus: QueryBus) {}
 
   @Post()
-  login() {
-    return 'login';
+  login(@Body('email') email: string, @Body('password') password: string) {
+    return this.queryBus.execute(new LoginQuery(email, password));
   }
 
   @Get()
   get() {
-    return this.loginService.login();
+    return 'get';
   }
 }
