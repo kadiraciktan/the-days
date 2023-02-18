@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { UserDatabaseService } from '@the-days/data-service';
 
 @Injectable()
 export class LoginService {
-  login(): string {
-    return 'login service works!';
+  constructor(private readonly userDataService: UserDatabaseService) {}
+
+  async login() {
+    return await this.userDataService.findAll();
   }
 }

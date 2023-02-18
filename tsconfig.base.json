@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@the-days/data-service": ["libs/data-service/src/index.ts"],
       "@the-days/database": ["libs/database/src/index.ts"]
     }
   },
