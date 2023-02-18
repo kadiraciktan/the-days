@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { dataSourceOptions } from '@the-days/database';
+import { dataSourceOptions, databaseEntities } from '@the-days/database';
 
 import { AppController } from './app.controller';
 import { AppGateway } from './app.gateway';
@@ -9,7 +9,13 @@ import { controllers } from './controllers';
 import { services } from './services';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(dataSourceOptions), AppGateway],
+  imports: [
+    TypeOrmModule.forRoot({
+      ...dataSourceOptions,
+      entities: databaseEntities,
+    }),
+    AppGateway,
+  ],
   controllers: [AppController, ...controllers],
   providers: [AppService, ...services],
 })
