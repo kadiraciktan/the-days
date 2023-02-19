@@ -12,7 +12,13 @@ export class LoginService {
   ) {}
 
   login(email: string, password: string) {
-    return this.httpClient.post(`${this.api}/login`, {
+    return this.httpClient.post(`${this.api}/auth/login`, {
+      email,
+      password,
+    });
+  }
+  register(email: string, password: string) {
+    return this.httpClient.post(`${this.api}/auth/register`, {
       email,
       password,
     });

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { firstValueFrom } from 'rxjs';
 import { LoginService } from '../../services';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export type ButtonState = 'login' | 'register';
 
@@ -21,30 +23,53 @@ export class LoginPageComponent {
 
   formGroup?: FormGroup;
 
-  constructor(private readonly loginService: LoginService) {}
+  constructor(
+    private readonly loginService: LoginService,
+    private readonly snackBar: MatSnackBar
+  ) {}
 
   login(formGroup: FormGroup) {
     if (formGroup.valid) {
       console.log(formGroup.value);
-      this.loginService
-        .login(formGroup.value.email, formGroup.value.password)
-        .subscribe((response) => {
-          console.log(response);
-        });
+      firstValueFrom(
+        this.loginService.login(formGroup.value.email, formGroup.value.password)
+      ).then((response) => {
+        console.log(response);
+      });
     } else {
-      this.errorMessage = 'Please fill out all fields';
+      this.snackBar.open('Please fill out all fields', 'Close', {
+        horizontalPosition: 'center',
+      });
     }
   }
 
   register(formGroup: FormGroup) {
     if (formGroup.valid) {
       console.log(formGroup.value);
+      firstValueFrom(
+        this.loginService.register(
+          formGroup.value.email,
+          formGroup.value.password
+        )
+      )
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((response) => {
+          this.snackBar.open(response.error.message, 'Close', {
+            horizontalPosition: 'center',
+          });
+        });
     } else {
       if (this.passwordControl.value !== this.confirmPasswordControl.value) {
-        this.errorMessage = 'Passwords do not match';
-      } else {
-        this.errorMessage = 'Please fill out all fields';
+        this.snackBar.open('Passwords do not match', 'Close', {
+          horizontalPosition: 'center',
+        });
+        return;
       }
+      this.snackBar.open('Please fill out all fields', 'Close', {
+        horizontalPosition: 'center',
+      });
     }
   }
 

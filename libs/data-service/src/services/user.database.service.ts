@@ -17,4 +17,19 @@ export class UserDatabaseService {
   async findAll() {
     return await this.userRepository.find();
   }
+
+  async register(email: string, password: string) {
+    const existsUser = await this.userRepository.findOne({
+      where: { email },
+    });
+
+    console.log(existsUser);
+    if (existsUser) {
+      throw new Error('User already exists');
+    }
+    return await this.userRepository.save({
+      email,
+      password,
+    });
+  }
 }

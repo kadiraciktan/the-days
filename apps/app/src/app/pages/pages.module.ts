@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceModule } from '../services';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
     MatButtonModule,
     BrowserAnimationsModule,
     ServiceModule,
+    MatSnackBarModule
   ],
   exports: [],
   providers: [],
