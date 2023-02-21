@@ -1,6 +1,6 @@
 {
   "name": "cqrs",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/cqrs/src",
   "projectType": "library",
   "targets": {
@@ -8,7 +8,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/cqrs/**/*.ts"]
+        "lintFilePatterns": ["libs/backend/cqrs/**/*.ts"]
       }
     }
   },
