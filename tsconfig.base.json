@@ -15,9 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@the-days/cqrs": ["libs/cqrs/src/index.ts"],
-      "@the-days/data-service": ["libs/data-service/src/index.ts"],
-      "@the-days/database": ["libs/database/src/index.ts"],
+      "@the-days/backend/cqrs": ["libs/backend/cqrs/src/index.ts"],
+      "@the-days/backend/data-service": ["libs/backend/data-service/src/index.ts"],
+      "@the-days/backend/database": ["libs/backend/database/src/index.ts"],
       "@the-days/game": ["libs/game/src/index.ts"]
     }
   },

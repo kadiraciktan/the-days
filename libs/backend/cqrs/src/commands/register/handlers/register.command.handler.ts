@@ -1,5 +1,5 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { UserDatabaseService } from '@the-days/data-service';
+import { UserDatabaseService } from '@the-days/backend/data-service';
 import { RegisterCommand } from '../impl';
 
 @CommandHandler(RegisterCommand)

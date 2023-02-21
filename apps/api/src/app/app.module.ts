@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { CqrsModule } from '@the-days/cqrs';
+import { CqrsModule } from '@the-days/backend/cqrs';
 import { AppGateway } from './app.gateway';
 import { controllers } from './controllers';
 

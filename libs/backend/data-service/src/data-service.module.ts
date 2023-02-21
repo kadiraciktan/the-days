@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { databaseEntities, dataSourceOptions } from '@the-days/database';
+import { databaseEntities, dataSourceOptions } from '@the-days/backend/database';
 import { dataServices } from './data-services';
 
 @Module({

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserEntity } from '@the-days/database';
+import { UserEntity } from '@the-days/backend/database';
 import { FindOneOptions, Repository } from 'typeorm';
 
 @Injectable()

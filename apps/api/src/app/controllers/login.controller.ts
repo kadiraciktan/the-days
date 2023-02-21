@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { LoginQuery, RegisterCommand } from '@the-days/cqrs';
+import { LoginQuery, RegisterCommand } from '@the-days/backend/cqrs';
 import { LoginUserInput } from '../inputs';
 import { LoginUserPayload } from '../payloads';
 

@@ -1,5 +1,5 @@
 import { QueryHandler } from '@nestjs/cqrs';
-import { UserDatabaseService } from '@the-days/data-service';
+import { UserDatabaseService } from '@the-days/backend/data-service';
 import { LoginQuery } from '../impl';
 
 @QueryHandler(LoginQuery)
