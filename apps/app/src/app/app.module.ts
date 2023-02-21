@@ -7,7 +7,7 @@ import { appRoutes } from './app.routes';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PagesModule } from './pages';
-import { GameModule } from '@the-days/game';
+import { GameModule } from '@the-days/frontend/game';
 @NgModule({
   declarations: [AppComponent],
   imports: [

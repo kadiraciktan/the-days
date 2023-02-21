@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
 import { GameService, LoginService } from '../../services';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { GameSceneEnum } from '@the-days/game';
+import { GameSceneEnum } from '@the-days/frontend/game';
 
 export type ButtonState = 'login' | 'register';
 

@@ -18,7 +18,7 @@
       "@the-days/backend/cqrs": ["libs/backend/cqrs/src/index.ts"],
       "@the-days/backend/data-service": ["libs/backend/data-service/src/index.ts"],
       "@the-days/backend/database": ["libs/backend/database/src/index.ts"],
-      "@the-days/game": ["libs/game/src/index.ts"]
+      "@the-days/frontend/game": ["libs/frontend/game/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
