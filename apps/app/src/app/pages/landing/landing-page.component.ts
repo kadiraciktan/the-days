@@ -1,20 +1,16 @@
-import {
-  AfterViewInit,
-  Component,
-  OnInit,
-  ViewContainerRef,
-} from '@angular/core';
-import { GameCanvas } from '@the-days/game';
-import { LoginPageComponent } from '../login/login-page.component';
+import { AfterViewInit, Component } from '@angular/core';
+import { GameService } from '../../services';
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss'],
 })
 export class LandingPageComponent implements AfterViewInit {
-  constructor(private readonly viewContainerRef: ViewContainerRef) {}
-
+  constructor(private readonly gameService: GameService) {
+    console.log('Landing Page');
+  }
   ngAfterViewInit() {
-    const game = new GameCanvas('game_canvas');
+    console.log('Landing Page');
+    this.gameService.initPhaser('game');
   }
 }

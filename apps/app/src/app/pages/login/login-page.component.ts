@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
-import { LoginService } from '../../services';
+import { GameService, LoginService } from '../../services';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { GameSceneEnum } from '@the-days/game';
 
 export type ButtonState = 'login' | 'register';
 
@@ -25,7 +26,8 @@ export class LoginPageComponent {
 
   constructor(
     private readonly loginService: LoginService,
-    private readonly snackBar: MatSnackBar
+    private readonly snackBar: MatSnackBar,
+    private readonly gameService: GameService
   ) {}
 
   login(formGroup: FormGroup) {
@@ -35,6 +37,13 @@ export class LoginPageComponent {
         this.loginService.login(formGroup.value.email, formGroup.value.password)
       ).then((response) => {
         console.log(response);
+        if (!response) {
+          this.snackBar.open('Invalid Credentials', 'Close', {
+            horizontalPosition: 'center',
+          });
+          return;
+        }
+        this.gameService.changeScene(GameSceneEnum.LobbyScene);
       });
     } else {
       this.snackBar.open('Please fill out all fields', 'Close', {

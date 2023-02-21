@@ -1,9 +1,10 @@
 import { GameSceneEnum } from './game-scene.enum';
 
-export class LoginScene extends Phaser.Scene {
+export class LobbyScene extends Phaser.Scene {
   constructor() {
-    super({ key: GameSceneEnum.LoginScene });
+    super({ key: GameSceneEnum.LobbyScene });
   }
+
   preload() {
     this.load.image('logo', 'assets/logo.png');
   }
@@ -12,8 +13,8 @@ export class LoginScene extends Phaser.Scene {
     const logo = this.add.image(400, 150, 'logo');
     this.tweens.add({
       targets: logo,
-      y: 450,
-      duration: 2000,
+      x: 450,
+      duration: 100,
       ease: 'Power2',
       yoyo: true,
       loop: -1,
