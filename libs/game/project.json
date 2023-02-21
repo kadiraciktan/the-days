@@ -1,0 +1,17 @@
+{
+  "name": "game",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/game/src",
+  "prefix": "the-days",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/game/**/*.ts", "libs/game/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

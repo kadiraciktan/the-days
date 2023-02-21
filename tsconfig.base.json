@@ -17,7 +17,8 @@
     "paths": {
       "@the-days/cqrs": ["libs/cqrs/src/index.ts"],
       "@the-days/data-service": ["libs/data-service/src/index.ts"],
-      "@the-days/database": ["libs/database/src/index.ts"]
+      "@the-days/database": ["libs/database/src/index.ts"],
+      "@the-days/game": ["libs/game/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -7,6 +7,7 @@ import { appRoutes } from './app.routes';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PagesModule } from './pages';
+import { GameModule } from '@the-days/game';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -16,6 +17,7 @@ import { PagesModule } from './pages';
     MatFormFieldModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     PagesModule,
+    GameModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

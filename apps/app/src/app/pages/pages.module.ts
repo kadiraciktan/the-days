@@ -9,16 +9,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceModule } from '../services';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LandingPageComponent } from './landing/landing-page.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: LandingPageComponent,
+  },
+
+  {
+    path: 'login',
     component: LoginPageComponent,
   },
 ];
 
 @NgModule({
-  declarations: [LoginPageComponent],
+  declarations: [LoginPageComponent, LandingPageComponent],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
@@ -28,7 +34,7 @@ const routes: Routes = [
     MatButtonModule,
     BrowserAnimationsModule,
     ServiceModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   exports: [],
   providers: [],
