@@ -11,6 +11,6 @@ export class LandingPageComponent implements AfterViewInit {
   }
   ngAfterViewInit() {
     console.log('Landing Page');
-    this.gameService.initPhaser('game');
+    this.gameService.initPhaser('game'); 
   }
 }

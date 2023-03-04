@@ -18,8 +18,8 @@ export class GameCanvas extends Game {
       scale: {
         mode: Phaser.Scale.ENVELOP, // Phaser.Scale.RESIZE,
         parent: canvas_id,
-        width: 1920,
-        height: 1080,
+        width: '100vh',
+        height: '100vh',
       },
     };
     super(config);

@@ -41,16 +41,16 @@ export class LoginScene extends Phaser.Scene {
         star.y = star.y - pad.axes[1].getValue() * 2;
 
         if (star.x < 0) {
-          star.x = this.scene.systems.canvas.width;
-        }
-        if (star.x > this.scene.systems.canvas.width) {
           star.x = 0;
         }
+        if (star.x > this.scene.systems.canvas.width) {
+          star.x = this.scene.systems.canvas.width;
+        }
         if (star.y < 0) {
-          star.y = this.scene.systems.canvas.height;
+          star.y = 0;
         }
         if (star.y > this.scene.systems.canvas.height) {
-          star.y = 0;
+          star.y = this.scene.systems.canvas.height;
         }
       });
       console.log(pad.axes);
