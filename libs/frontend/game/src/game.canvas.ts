@@ -11,6 +11,9 @@ export class GameCanvas extends Game {
         default: 'arcade',
         arcade: {},
       },
+      input: {
+        gamepad: true,
+      },
       backgroundColor: '#00000',
       scale: {
         mode: Phaser.Scale.ENVELOP, // Phaser.Scale.RESIZE,
