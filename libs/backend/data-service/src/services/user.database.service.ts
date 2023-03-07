@@ -32,4 +32,24 @@ export class UserDatabaseService {
       password,
     });
   }
+
+  async setRefreshToken(userId: string, refreshToken: string) {
+    return await this.userRepository.update(userId, {
+      refreshToken,
+      refreshTokenExpires: new Date(Date.now() + 30 * 1000),
+    });
+  }
+
+  async checkRefreshTokenIsExpired(userId: string, refreshToken: string) {
+    const user = await this.userRepository.findOne({
+      where: { id: userId },
+    });
+    if (user.refreshToken !== refreshToken) {
+      return false;
+    }
+    if (user.refreshTokenExpires < new Date()) {
+      return false;
+    }
+    return true;
+  }
 }

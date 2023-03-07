@@ -38,10 +38,19 @@ export class LoginController {
       const model = new LoginUserPayload();
       model.accessToken = jwt.access_token;
       model.userName = user.name;
-      model.refreshToken = await this.authService.getRefreshToken(user.id);
+      const refreshToken = await this.authService.createRefreshToken(user.id);
+      model.refreshToken = refreshToken;
       return model;
     }
     return null;
+  }
+
+  @Post('refresh')
+  @ApiOperation({ summary: 'Refresh' })
+  async refresh(@Body() input: { token: string }) {
+    const { token } = input;
+    const jwt = await this.authService.getAccessTokenFromRefreshToken(token);
+    return jwt;
   }
 
   @Post('register')
