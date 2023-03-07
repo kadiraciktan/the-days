@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { JwtService } from '@nestjs/jwt';
 import { UserDatabaseService } from '@the-days/backend/data-service';
@@ -10,25 +10,15 @@ export class AuthService {
     private jwtService: JwtService
   ) {}
 
-  async validateUser(email: string, pass: string): Promise<any> {
-    const user = await this.usersService.findOne({
-      where: { email },
-    });
-    if (user && user.password === pass) {
-      const { password, ...result } = user;
-      if (user.refreshTokenExpires < new Date() || !user.refreshToken) {
-        const refreshToken = await this.createRefreshToken(user.id);
-        await this.usersService.setRefreshToken(user.id, refreshToken);
-      }
-      return result;
-    }
-    return null;
-  }
-
   createRefreshToken = async (userId: string) => {
     const refreshToken = this.jwtService.sign({ userId });
     await this.usersService.setRefreshToken(userId, refreshToken);
     return refreshToken;
+  };
+
+  createAccessToken = async (id: string, name: string) => {
+    const payload = { username: name, sub: id };
+    return this.jwtService.sign(payload);
   };
 
   getAccessTokenFromRefreshToken = async (
@@ -39,12 +29,16 @@ export class AuthService {
       where: { refreshToken },
     });
 
+    if (!user) {
+      throw new UnauthorizedException();
+    }
+
     if (user.refreshToken !== refreshToken) {
-      return null;
+      throw new UnauthorizedException();
     }
 
     if (user.refreshTokenExpires < new Date()) {
-      return null;
+      throw new UnauthorizedException();
     }
 
     const lastRefreshToken = await this.createRefreshToken(user.id);
@@ -56,11 +50,4 @@ export class AuthService {
       refresh_token: lastRefreshToken,
     };
   };
-
-  async login(user: any) {
-    const payload = { username: user.name, sub: user.id };
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
-  }
 }

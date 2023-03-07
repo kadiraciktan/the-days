@@ -34,9 +34,12 @@ export class LoginController {
     } = await this.queryBus.execute(new LoginQuery(email, password));
 
     if (user) {
-      const jwt = await this.authService.login(user);
+      const accessToken = await this.authService.createAccessToken(
+        user.id,
+        user.name
+      );
       const model = new LoginUserPayload();
-      model.accessToken = jwt.access_token;
+      model.accessToken = accessToken;
       model.userName = user.name;
       const refreshToken = await this.authService.createRefreshToken(user.id);
       model.refreshToken = refreshToken;
