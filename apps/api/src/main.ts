@@ -16,9 +16,10 @@ async function bootstrap() {
     .setTitle('The Days')
     .setDescription('The Days API Documentation')
     .setVersion('0.0.1')
+    .setBasePath(globalPrefix)
     .build();
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('api', app, swaggerDocument);
+  SwaggerModule.setup(globalPrefix, app, swaggerDocument);
 
   app.setGlobalPrefix(globalPrefix);
   app.enableCors();

@@ -8,6 +8,7 @@ import {
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { LoginQuery, RegisterCommand } from '@the-days/backend/cqrs';
+import { AuthService } from '../auth/auth.service';
 import { LoginUserInput } from '../inputs';
 import { LoginUserPayload } from '../payloads';
 
@@ -16,7 +17,8 @@ import { LoginUserPayload } from '../payloads';
 export class LoginController {
   constructor(
     private readonly queryBus: QueryBus,
-    private readonly commandBus: CommandBus
+    private readonly commandBus: CommandBus,
+    private readonly authService: AuthService
   ) {}
 
   @Post('login')
@@ -26,12 +28,17 @@ export class LoginController {
   })
   async login(@Body() input: LoginUserInput) {
     const { email, password } = input;
-    const user = await this.queryBus.execute(new LoginQuery(email, password));
+    const user: {
+      id: string;
+      name: string;
+    } = await this.queryBus.execute(new LoginQuery(email, password));
+
     if (user) {
+      const jwt = await this.authService.login(user);
       const model = new LoginUserPayload();
-      (model.accessToken = 'token'),
-        (model.refreshToken = 'token'),
-        (model.userName = user.name);
+      model.accessToken = jwt.access_token;
+      model.userName = user.name;
+      model.refreshToken = await this.authService.getRefreshToken(user.id);
       return model;
     }
     return null;

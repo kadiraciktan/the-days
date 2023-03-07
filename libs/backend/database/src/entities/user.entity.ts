@@ -17,6 +17,10 @@ export class UserEntity {
   password: string;
   @Column({ nullable: true })
   name: string;
+  @Column({ nullable: true })
+  refreshToken: string;
+  @Column({ type: 'timestamptz', nullable: true })
+  refreshTokenExpires: Date;
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt: Date;
   @UpdateDateColumn({ type: 'timestamptz' })

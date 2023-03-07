@@ -8,7 +8,7 @@ export const dataSourceOptions: DataSourceOptions = {
   password: '123456',
   database: 'the-days-db',
   entities: ['dist/**/*.entity.js'],
-  migrations: ['dist/libs/database/src/migrations/*.js'],
+  migrations: ['dist/libs/backend/database/src/migrations/*.js'],
 };
 
 const dataSource = new DataSource(dataSourceOptions);
