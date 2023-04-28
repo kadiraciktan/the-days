@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { GameService } from '../../services';
+import { GameSceneEnum, GameService } from '@the-days/frontend/game';
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -11,6 +11,7 @@ export class LandingPageComponent implements AfterViewInit {
   }
   ngAfterViewInit() {
     console.log('Landing Page');
-    this.gameService.initPhaser('game'); 
+    this.gameService.initPhaser('game');
+    this.gameService.changeScene(GameSceneEnum.DevelopmentScene);
   }
 }

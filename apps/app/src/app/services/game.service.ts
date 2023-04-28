@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 export class GameService {
   game!: GameCanvas;
   initPhaser(canvas_id: string) {
-    this.game = new GameCanvas(canvas_id);
+    this.game = new GameCanvas();
   }
 
   changeScene(scene: GameSceneEnum) {

@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceModule } from '../services';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LandingPageComponent } from './landing/landing-page.component';
+import { DevelopmentPageComponent } from './development/development.component';
 
 const routes: Routes = [
   {

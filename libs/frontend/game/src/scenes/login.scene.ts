@@ -24,7 +24,7 @@ export class LoginScene extends Phaser.Scene {
       this.pointerY = pointer.y;
     });
 
-    this.input.gamepad.once('connected', (pad: any) => {
+    this.input?.gamepad?.once('connected', (pad: any) => {
       console.log('Gamepad Connected', pad.id);
 
       pad.on('down', (button: any, index: number) => {
@@ -34,7 +34,9 @@ export class LoginScene extends Phaser.Scene {
   }
 
   override update(time: number, delta: number): void {
-    const pad = this.input.gamepad.getPad(0);
+    if (!this.scene.isActive()) return;
+
+    const pad = this.input?.gamepad?.getPad(0);
     if (pad) {
       this.stars.forEach((star) => {
         star.x = star.x - pad.axes[0].getValue() * 2;

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
-import { GameService, LoginService } from '../../services';
+import { LoginService } from '../../services';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { GameSceneEnum } from '@the-days/frontend/game';
+import { GameSceneEnum, GameService } from '@the-days/frontend/game';
 
 export type ButtonState = 'login' | 'register';
 
@@ -43,7 +43,6 @@ export class LoginPageComponent {
           });
           return;
         }
-        this.gameService.changeScene(GameSceneEnum.LobbyScene);
       });
     } else {
       this.snackBar.open('Please fill out all fields', 'Close', {
