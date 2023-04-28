@@ -21,7 +21,6 @@ export class GameCanvas extends Game {
         width: '100vh',
         height: '100vh',
       },
-      autoFocus: false,
     };
 
     super(config);

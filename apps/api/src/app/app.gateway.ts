@@ -17,18 +17,20 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   handleDisconnect(client: any) {
     console.log('disconnect');
+    this.players = this.players.filter((player) => player.id !== client.id);
+    console.log(this.players);
+    this.server.emit('players', this.players);
   }
 
   handleConnection(client: any, ...args: any[]) {
     console.log('connect');
     const player = {
       id: client.id,
-      name: 'Kadir',
-      x: 0,
-      y: 0,
+      name: 'Player ' + Math.floor(Math.random() * 100),
+      x: Math.floor(Math.random() * 800),
+      y: Math.floor(Math.random() * 600),
     };
-    // this.players.push(player);
-
+    this.players.push(player);
     this.server.emit('players', this.players);
   }
 

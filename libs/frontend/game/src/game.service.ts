@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatest, filter } from 'rxjs';
 import { GameCanvas } from './game.canvas';
 import { GameSceneEnum } from './scenes';
+import { Socket } from 'socket.io';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameService {
-  currentScene$ = new BehaviorSubject<GameSceneEnum | undefined>(undefined);
-  gameScenes$ = new BehaviorSubject<Phaser.Scene[]>([]);
+  private currentScene$ = new BehaviorSubject<GameSceneEnum | undefined>(
+    undefined
+  );
+  private gameScenes$ = new BehaviorSubject<Phaser.Scene[]>([]);
   private game!: Phaser.Game;
 
   initPhaser(canvas_id: string) {

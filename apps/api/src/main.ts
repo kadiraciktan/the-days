@@ -16,7 +16,7 @@ async function bootstrap() {
     .setTitle('The Days')
     .setDescription('The Days API Documentation')
     .setVersion('0.0.1')
-    .setBasePath(globalPrefix)
+    .addServer(`http://localhost:3333/${globalPrefix}`)
     .build();
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup(globalPrefix, app, swaggerDocument);

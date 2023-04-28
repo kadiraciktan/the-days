@@ -9,7 +9,10 @@ export class LoginScene extends Phaser.Scene {
     super({ key: GameSceneEnum.LoginScene });
   }
   preload() {
-    this.load.image('logo', 'assets/logo.png');
+    this.load.on('complete', () => {
+      this.load.image('logo', 'assets/logo.png');
+      this.add.image(400, 300, 'logo');
+    });
   }
 
   create() {

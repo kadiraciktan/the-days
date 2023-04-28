@@ -6,11 +6,8 @@ import { GameSceneEnum, GameService } from '@the-days/frontend/game';
   styleUrls: ['./landing-page.component.scss'],
 })
 export class LandingPageComponent implements AfterViewInit {
-  constructor(private readonly gameService: GameService) {
-    console.log('Landing Page');
-  }
+  constructor(private readonly gameService: GameService) {}
   ngAfterViewInit() {
-    console.log('Landing Page');
     this.gameService.initPhaser('game');
     this.gameService.changeScene(GameSceneEnum.DevelopmentScene);
   }
