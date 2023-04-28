@@ -1,6 +1,7 @@
 export class PlayerGameModel {
-  id: string;
+  socket_id: string;
   name: string;
   x: number;
   y: number;
+  rotation: number;
 }

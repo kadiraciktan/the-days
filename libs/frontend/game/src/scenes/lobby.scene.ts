@@ -18,4 +18,9 @@ export class LobbyScene extends Phaser.Scene {
       loop: -1,
     });
   }
+
+
+ override update() {
+    console.log('Lobby Scene Update',this.input.mousePointer.x, this.input.mousePointer.y);
+  }
 }
