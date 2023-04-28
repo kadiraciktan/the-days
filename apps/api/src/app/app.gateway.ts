@@ -7,7 +7,11 @@ import {
   WebSocketServer,
 } from '@nestjs/websockets';
 import { Socket, Server } from 'socket.io';
+
 import { PlayerGameModel } from '@the-days/shared/models';
+import { ArcadePhysics } from 'arcade-physics';
+
+//https://github.com/yandeu/arcade-physics
 
 @WebSocketGateway({ cors: true, namespace: 'game' })
 export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
@@ -15,6 +19,12 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
   server: Server;
 
   players: PlayerGameModel[] = [];
+
+  room: {
+    id: '4b92889a-59d5-46c0-8a73-07755e71f381';
+    name: 'room1';
+    players: PlayerGameModel[];
+  };
 
   handleDisconnect(client: any) {
     console.log('Player disconnected');
@@ -37,6 +47,19 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
     console.log(this.players);
     this.server.emit('players', this.players);
     this.server.emit('message', player);
+
+    const config = {
+      width: 800,
+      height: 450,
+      gravity: {
+        x: 0,
+        y: 300,
+      },
+    };
+
+    const physics = new ArcadePhysics(config);
+    const box = physics.add.body(player.x, player.y, 32, 32);
+    console.log(box);
   }
 
   @SubscribeMessage('message')
