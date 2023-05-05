@@ -2,7 +2,7 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
-  host: 'localhost',
+  host: 'localhost',  // '172.17.0.1', //=>  docker bridge ip address
   port: 5432,
   username: 'the-days-db-user',
   password: '123456',
