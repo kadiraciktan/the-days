@@ -1,0 +1,50 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "maps/development.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 296,
+                "y": 472
+            }
+        },
+        "maps/jeep.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/dust_klin.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/jeep.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/Kadir/Projects/the-days/apps/app/src/assets/maps",
+    "last.imagePath": "C:/Users/Kadir/Projects/the-days/tiled/assets",
+    "map.lastUsedExportFilter": "All Files (*)",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+    ],
+    "project": "development.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "tilesets/jeep.tsx",
+        "maps/jeep.tsx",
+        "tilesets/dust_klin.tsx",
+        "maps/development.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 192,
+        "width": 128
+    }
+}

@@ -20,11 +20,34 @@ export class DevelopmentScene extends Phaser.Scene {
       frameWidth: 32,
       frameHeight: 32,
     });
+    this.load.image('tiles', 'assets/tiles/dust_klin.bmp');
+    this.load.image('jeep_image', 'assets/tiles/jeep.png');
+    this.load.tilemapTiledJSON('map', 'assets/maps/development_map.json');
   }
 
   create() {
-    // this.loadOffline();
     this.loadSocket();
+    const tileSets: Phaser.Tilemaps.Tileset[] = [];
+
+    const map = this.make.tilemap({
+      key: 'map',
+    });
+    const dustTileset = map.addTilesetImage('dust_klin', 'tiles', 32, 32);
+    if (!dustTileset) return;
+    tileSets.push(dustTileset);
+
+    const layer = map.createLayer('ground', tileSets, 0, 0);
+    if (!layer) return;
+
+    const collideLayer = map.createLayer('collide_layer', tileSets);
+    if (!collideLayer) return;
+    collideLayer.setCollisionByExclusion([-1]);
+
+    const debugGraphics = this.add.graphics();
+    debugGraphics.setScale(1);
+    map.renderDebug(debugGraphics);
+
+    this.physics.add.collider(this.playerController.gameObject, collideLayer);
   }
 
   override update() {
@@ -34,8 +57,8 @@ export class DevelopmentScene extends Phaser.Scene {
   loadOffline() {
     this.playerController = new PlayerController(this);
     this.playerController.create({
-      x: 100,
-      y: 100,
+      x: 250,
+      y: 250,
       socket_id: '123',
       name: 'Player 1',
       rotation: 0,

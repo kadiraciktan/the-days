@@ -21,8 +21,10 @@ export class PlayerController {
       this.scene.physics.world,
       this.gameObject
     );
-    this.gameObject.body.setCollideWorldBounds(true);
+    this.gameObject.body.collideWorldBounds = true;
     this.scene.add.existing(this.gameObject);
+    this.scene.physics.add.existing(this.gameObject);
+    this.gameObject.body.setCollideWorldBounds(true);
   }
 
   update() {
